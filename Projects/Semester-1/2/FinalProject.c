@@ -125,7 +125,7 @@ void reporteEntregados() {
 void menu() {
     int opcion;
 
-    do {
+do {
         printf("\n====== MENÚ PRINCIPAL ======\n");
         printf("1. Ingreso de datos del representante\n");
         printf("2. Entrega de regalo a un niño\n");
@@ -136,21 +136,27 @@ void menu() {
         scanf("%d", &opcion);
         limpiarBuffer();
 
-        if (opcion == 1) {
-            ingresarFamilias();
-        } else if (opcion == 2) {
-            entregarRegalo();
-        } else if (opcion == 3) {
-            reporteFaltantes();
-        } else if (opcion == 4) {
-            reporteEntregados();
-        } else if (opcion == 5) {
-            printf("Saliendo del programa...\n");
-        } else {
-            printf("Opción inválida.\n");
+        switch (opcion) {
+            case 1:
+                ingresarFamilias();
+                break;
+            case 2:
+                entregarRegalo();
+                break;
+            case 3:
+                reporteFaltantes();
+                break;
+            case 4:
+                reporteEntregados();
+                break;
+            case 5:
+                printf("Saliendo del programa...\n");
+                break;
+            default:
+                printf("Opción inválida.\n");
+                break;
         }
-
-    } while (opcion != 5);
+    } while (opcion != 5);       
 }
 
 // Punto de entrada
