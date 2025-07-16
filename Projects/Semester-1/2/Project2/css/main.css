@@ -1,22 +1,28 @@
-/* Sección completa tipo "hero" */
+/* Importar fuente desde Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;900&display=swap');
+
+/* ---- HERO SECTION ---- */
 .hero {
   position: relative;
   height: 100vh;
   overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
 }
 
-/* Fondo animado con gradientes */
+/* Fondo animado con gradiente */
 .fondo-animado {
   position: absolute;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
-  background: linear-gradient(-45deg, #0f0c29, #302b63, #24243e, #1a1a1a);
+  background: linear-gradient(-45deg, #0d1117, #1f2c3b, #121212, #0d1117);
   background-size: 400% 400%;
-  animation: animacionGradiente 15s ease infinite;
-  z-index: -1;
-  filter: brightness(0.6);
+  animation: animacionGradiente 20s ease infinite;
+  z-index: 1;
 }
 
 @keyframes animacionGradiente {
@@ -25,76 +31,176 @@
   100% { background-position: 0% 50%; }
 }
 
-/* Texto centrado */
-.hero-texto {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100%;
-  text-align: center;
+/* Contenedor para el texto del Hero */
+.hero-contenido {
+  position: relative;
+  z-index: 3;
   color: #ffffff;
   padding: 0 20px;
+  animation: fadeIn 2s ease-out;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
 }
 
 .marca-nombre {
-  font-size: 5rem;
-  font-weight: bold;
-  animation: aparecer 2s ease-out;
+  font-family: 'Montserrat', sans-serif;
+  font-size: clamp(3rem, 10vw, 6rem); /* Responsive font size */
+  font-weight: 900;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  margin: 0;
 }
 
-@keyframes aparecer {
-  from {
-    opacity: 0;
-    transform: translateY(30px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
+.hero-subtitulo {
+  font-size: clamp(1.1rem, 3vw, 1.5rem);
+  margin-top: 10px;
+  color: #ccc;
+  font-weight: 400;
 }
 
-/* Comentarios más abajo del scroll */
-.comentarios-clientes {
-  background-color: #121212;
+.hero-cta {
+  display: inline-block;
+  background-color: #00aaff;
   color: #ffffff;
-  padding: 80px 30px;
-  text-align: center;
+  padding: 15px 35px;
+  margin-top: 30px;
+  border-radius: 50px;
+  text-decoration: none;
+  font-weight: 700;
+  font-size: 1.1rem;
+  transition: background-color 0.3s ease, transform 0.3s ease;
 }
 
-.comentarios-clientes h2 {
-  margin-bottom: 20px;
-  font-size: 2rem;
+.hero-cta:hover {
+  background-color: #0088cc;
+  transform: scale(1.05);
 }
 
-.comentario {
-  background-color: #1f1f1f;
-  padding: 15px;
-  margin: 10px auto;
-  max-width: 600px;
-  border-left: 5px solid #00c3ff;
-  border-radius: 4px;
+/* Indicador de scroll */
+.scroll-down {
+    position: absolute;
+    bottom: 30px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 3;
+    width: 30px;
+    height: 50px;
+    border: 2px solid #fff;
+    border-radius: 50px;
 }
 
+.scroll-down::before {
+    content: '';
+    position: absolute;
+    top: 10px;
+    left: 50%;
+    width: 6px;
+    height: 6px;
+    background: #fff;
+    border-radius: 100%;
+    transform: translateX(-50%);
+    animation: scrollAnimation 2s infinite;
+}
+
+@keyframes scrollAnimation {
+    0% { transform: translate(-50%, 0); opacity: 0; }
+    40% { opacity: 1; }
+    80% { transform: translate(-50%, 20px); opacity: 0; }
+    100% { opacity: 0; }
+}
+
+
+/* ---- ICONOS DEPORTIVOS FLOTANTES ---- */
 .iconos-deporte {
   position: absolute;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
-  z-index: -1;
+  z-index: 2;
   pointer-events: none;
 }
 
 .icono {
   position: absolute;
-  width: 60px;
-  opacity: 0.8;
-  animation: flotar 6s ease-in-out infinite;
+  width: clamp(40px, 5vw, 60px); /* Responsive icon size */
+  height: auto;
+  opacity: 0; /* Start hidden, will be shown by animation */
+  animation: flotar 8s ease-in-out infinite, fadeInIcon 1s forwards;
 }
 
-/* Animación de flotación suave */
 @keyframes flotar {
   0% { transform: translateY(0px) rotate(0deg); }
-  50% { transform: translateY(-20px) rotate(5deg); }
+  50% { transform: translateY(-25px) rotate(10deg); }
   100% { transform: translateY(0px) rotate(0deg); }
+}
+
+@keyframes fadeInIcon {
+    to { opacity: 0.3; }
+}
+
+/* ---- SECCIÓN DE COMENTARIOS ---- */
+.comentarios-clientes {
+  background-color: #121212;
+  color: #ffffff;
+  padding: 80px 20px;
+  text-align: center;
+}
+
+.comentarios-clientes h2 {
+  font-size: 2.5rem;
+  font-weight: 700;
+  margin-bottom: 50px;
+  color: #00aaff;
+}
+
+.comentarios-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 25px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.comentario-card {
+  background-color: #1e1e1e;
+  padding: 30px;
+  border-radius: 12px;
+  text-align: left;
+  border-top: 4px solid #00aaff;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.comentario-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 8px 25px rgba(0, 170, 255, 0.2);
+}
+
+.comentario-texto {
+    font-style: italic;
+    color: #ddd;
+    line-height: 1.6;
+    margin-bottom: 20px;
+    position: relative;
+}
+
+.comentario-texto::before {
+    content: '“';
+    font-family: 'Times New Roman', serif;
+    font-size: 4rem;
+    color: #00aaff30;
+    position: absolute;
+    top: -20px;
+    left: -15px;
+    z-index: 1;
+}
+
+.comentario-autor {
+    font-weight: 700;
+    color: #ffffff;
+    text-align: right;
 }

@@ -113,6 +113,14 @@ main.carrito h2 {
   filter: brightness(0) invert(1);
 }
 
+/* Contenedor de los botones para que estén en línea */
+.contenedor-botones {
+  display: flex;
+  gap: 20px;
+  margin-top: 20px;
+}
+
+/* Botón Vaciar carrito */
 .vaciar-carrito {
   background-color: #e03e3e;
   color: white;
@@ -124,13 +132,34 @@ main.carrito h2 {
   cursor: pointer;
   box-shadow: 0 4px 8px rgba(224, 62, 62, 0.4);
   transition: background-color 0.3s ease, box-shadow 0.3s ease;
-  margin-top: 20px;
-  display: block;
-  width: 200px;
   text-align: center;
+  width: auto; /* Ajuste automático */
+  min-width: 140px; /* opcional para no quedar muy pequeños */
 }
 
 .vaciar-carrito:hover {
   background-color: #b72b2b;
   box-shadow: 0 6px 12px rgba(183, 43, 43, 0.6);
+}
+
+/* Botón Finalizar compra */
+.finalizar-compra {
+  background-color: #00c3ff;
+  color: white;
+  border: none;
+  padding: 12px 24px;
+  font-size: 1rem;
+  font-weight: 600;
+  border-radius: 6px;
+  cursor: pointer;
+  box-shadow: 0 4px 8px rgba(0, 195, 255, 0.4);
+  transition: background-color 0.3s ease, box-shadow 0.3s ease;
+  text-align: center;
+  width: auto; /* Ajuste automático */
+  min-width: 140px; /* opcional */
+}
+
+.finalizar-compra:hover {
+  background-color: #0094bf;
+  box-shadow: 0 6px 12px rgba(0, 148, 191, 0.6);
 }

@@ -1,27 +1,106 @@
+/* Importar fuente desde Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;700&display=swap');
+
+/* Estilos generales del cuerpo */
 body {
   padding-top: 80px;
   background-color: #121212;
   color: #ffffff;
-  font-family: 'Segoe UI', sans-serif;
+  font-family: 'Montserrat', sans-serif;
+  line-height: 1.6;
 }
 
 main.acerca {
-  padding: 60px 30px;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0; /* Remove padding to allow full-width sections */
+  opacity: 0;
+  animation: fadeIn 1s forwards;
+}
+
+@keyframes fadeIn {
+  to {
+    opacity: 1;
+  }
+}
+
+/* Hero Section */
+.hero-acerca {
+  background: linear-gradient(rgba(18, 18, 18, 0.7), rgba(18, 18, 18, 0.9)), url('../assets/img/about-hero.jpg'); /* Add a background image */
+  background-size: cover;
+  background-position: center;
+  padding: 80px 40px;
+  text-align: center;
+  border-bottom: 1px solid #222;
+}
+
+.hero-acerca h1 {
+  font-size: 3rem;
+  font-weight: 700;
+  color: #ffffff;
+  margin-bottom: 15px;
+}
+
+.hero-acerca .mision {
+  font-size: 1.25rem;
   max-width: 800px;
   margin: 0 auto;
+  line-height: 1.7;
+  color: #ddd;
+}
+
+/* Contenido Principal */
+.contenido-acerca {
+    padding: 60px 20px;
+}
+
+.contenido-acerca h2 {
+  font-size: 2.5rem;
+  font-weight: 700;
+  margin-bottom: 40px;
+  text-align: center;
+  color: #00aaff;
+}
+
+/* Grid de Características */
+.diferencias-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 30px;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.diferencia-card {
+  background-color: #1e1e1e;
+  padding: 30px;
+  border-radius: 12px;
+  border: 1px solid #2a2a2a;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
   text-align: center;
 }
 
-main.acerca h2 {
-  font-size: 2.2rem;
-  margin-bottom: 25px;
-  border-bottom: 2px solid #00c3ff;
-  display: inline-block;
-  padding-bottom: 10px;
+.diferencia-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 25px #00aaff20;
 }
 
-main.acerca p {
-  font-size: 1.2rem;
-  line-height: 1.7;
-  color: #dddddd;
+.diferencia-card .icono {
+    width: 50px;
+    height: 50px;
+    margin-bottom: 20px;
+    stroke: #00aaff; /* Color del borde del icono */
+}
+
+.diferencia-card h3 {
+  font-size: 1.4rem;
+  font-weight: 600;
+  margin-bottom: 10px;
+  color: #eee;
+}
+
+.diferencia-card p {
+  font-size: 1rem;
+  color: #bbb;
+  line-height: 1.6;
 }

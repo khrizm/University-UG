@@ -60,3 +60,49 @@ function mostrarMensaje(texto) {
       });
     });
   });
+
+  document.addEventListener('DOMContentLoaded', () => {
+    const filtros = document.querySelectorAll('.filtro');
+    const productos = document.querySelectorAll('.producto');
+
+    filtros.forEach(filtro => {
+        filtro.addEventListener('click', function() {
+            // Manejar la clase 'active' para el feedback visual
+            filtros.forEach(f => f.classList.remove('active'));
+            this.classList.add('active');
+
+            const categoriaSeleccionada = this.getAttribute('data-categoria');
+
+            // Filtrar productos
+            productos.forEach(producto => {
+                const categoriaProducto = producto.getAttribute('data-categoria');
+                
+                // Si la categoría coincide o se selecciona "Todos", mostrar el producto. Si no, ocultarlo.
+                if (categoriaSeleccionada === 'Todos' || categoriaProducto === categoriaSeleccionada) {
+                    // Usamos una pequeña demora para que la animación CSS se active
+                    setTimeout(() => {
+                        producto.classList.remove('hidden');
+                        producto.style.display = 'flex';
+                    }, 0);
+                } else {
+                    producto.classList.add('hidden');
+                    // Esperar a que termine la animación antes de ocultarlo completamente
+                    setTimeout(() => {
+                        if (producto.classList.contains('hidden')) {
+                            producto.style.display = 'none';
+                        }
+                    }, 400); // Este tiempo debe coincidir con la duración de la transición en CSS
+                }
+            });
+        });
+    });
+
+    // Asegurarse de que al cargar la página todos los productos sean visibles
+    const filtroActivo = document.querySelector('.filtro.active');
+    if (filtroActivo && filtroActivo.getAttribute('data-categoria') === 'Todos') {
+        productos.forEach(producto => {
+            producto.classList.remove('hidden');
+            producto.style.display = 'flex';
+        });
+    }
+});
